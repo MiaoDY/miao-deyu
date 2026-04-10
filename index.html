@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>苗得雨 | Deyu Miao</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Source Serif 4', 'Noto Serif SC', 'Georgia', serif;
+      color: #374151;
+      background: #fff;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- Layout ---- */
+    .container { max-width: 780px; margin: 0 auto; padding: 0 32px; }
+
+    /* ---- Nav ---- */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e5e7eb;
+    }
+    nav .container {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 52px;
+    }
+    .nav-name {
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 600; font-size: 1rem; color: #111827;
+      letter-spacing: 0.02em;
+    }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.8rem; font-weight: 400; color: #6b7280;
+      text-decoration: none; letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #111827; }
+    .menu-btn {
+      display: none; background: none; border: none; cursor: pointer;
+      color: #374151; padding: 4px;
+    }
+    .mobile-nav {
+      display: none; flex-direction: column; gap: 0;
+      border-top: 1px solid #f3f4f6;
+    }
+    .mobile-nav a {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.85rem; color: #4b5563; text-decoration: none;
+      padding: 12px 0; border-bottom: 1px solid #f9fafb;
+      transition: color 0.15s;
+    }
+    .mobile-nav a:hover { color: #111827; }
+    .mobile-nav.open { display: flex; }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .menu-btn { display: block; }
+      .container { padding: 0 20px; }
+    }
+
+    /* ---- Hero ---- */
+    .hero { padding: 64px 0 48px; }
+    .hero-name {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 2.5rem; font-weight: 700; color: #111827;
+      letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 4px;
+    }
+    .hero-name-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 400; font-style: italic;
+      color: #9ca3af; margin-bottom: 20px; letter-spacing: 0.02em;
+    }
+    .hero-affil {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.95rem; color: #4b5563; line-height: 1.9;
+      font-weight: 400;
+    }
+    .hero-affil strong { color: #111827; font-weight: 500; }
+    .hero-contact {
+      margin-top: 20px; display: flex; gap: 6px; flex-wrap: wrap;
+    }
+    .hero-contact a {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.8rem; color: #6b7280; text-decoration: none;
+      border: 1px solid #e5e7eb; border-radius: 4px;
+      padding: 4px 14px; transition: all 0.2s; letter-spacing: 0.02em;
+    }
+    .hero-contact a:hover { border-color: #9ca3af; color: #111827; }
+
+    /* ---- Section ---- */
+    .section { padding: 40px 0; }
+    .section + .section { border-top: 1px solid #f3f4f6; }
+    .section-heading {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.75rem; font-weight: 500; color: #9ca3af;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      margin-bottom: 24px;
+    }
+
+    /* ---- Research Interests ---- */
+    .interests {
+      font-size: 0.95rem; color: #4b5563; line-height: 2;
+    }
+    .interests span {
+      display: inline-block;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 1px; margin-right: 4px;
+      transition: border-color 0.2s;
+    }
+    .interests span:hover { border-color: #9ca3af; }
+
+    /* ---- Education ---- */
+    .edu-item { margin-bottom: 20px; }
+    .edu-item:last-child { margin-bottom: 0; }
+    .edu-date {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.78rem; color: #9ca3af; font-weight: 400;
+      margin-bottom: 2px;
+    }
+    .edu-school {
+      font-weight: 500; color: #111827; font-size: 0.95rem;
+    }
+    .edu-detail {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.85rem; color: #6b7280; font-weight: 400;
+    }
+
+    /* ---- Publications ---- */
+    .pub-group { margin-bottom: 32px; }
+    .pub-group:last-child { margin-bottom: 0; }
+    .pub-group-label {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.72rem; color: #b0b7c3; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .pub-item {
+      margin-bottom: 18px; padding-left: 18px; text-indent: -18px;
+      font-size: 0.92rem; line-height: 1.8;
+    }
+    .pub-item:last-child { margin-bottom: 0; }
+    .pub-title { color: #111827; font-weight: 500; }
+    .pub-venue {
+      font-style: italic; color: #6b7280;
+    }
+    .pub-venue::before { content: ' — '; }
+    .pub-status {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-style: normal; font-weight: 500; font-size: 0.78rem;
+      color: #b45309; background: #fffbeb; padding: 1px 8px;
+      border-radius: 3px; margin-left: 6px; letter-spacing: 0.02em;
+    }
+    .pub-year {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.82rem; color: #9ca3af;
+    }
+
+    /* ---- Conferences ---- */
+    .conf-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px 32px;
+    }
+    .conf-item {
+      font-size: 0.88rem; color: #4b5563; padding: 6px 0;
+      border-bottom: 1px solid #f9fafb;
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 8px;
+    }
+    .conf-role {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.7rem; color: #b0b7c3; white-space: nowrap; flex-shrink: 0;
+    }
+    @media (max-width: 640px) {
+      .conf-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ---- Projects ---- */
+    .proj-item {
+      margin-bottom: 16px; padding-bottom: 16px;
+      border-bottom: 1px solid #f9fafb;
+    }
+    .proj-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .proj-name {
+      font-size: 0.9rem; color: #111827; font-weight: 500; line-height: 1.6;
+    }
+    .proj-meta {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.75rem; color: #9ca3af; margin-top: 2px;
+    }
+
+    /* ---- Footer ---- */
+    footer {
+      margin-top: 24px; padding: 32px 0;
+      border-top: 1px solid #e5e7eb;
+      text-align: center;
+    }
+    footer p {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.72rem; color: #c0c7d0; letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Nav ===== -->
+  <nav>
+    <div class="container">
+      <span class="nav-name">苗得雨</span>
+      <div class="nav-links">
+        <a href="#research">研究</a>
+        <a href="#education">教育</a>
+        <a href="#publications">论文</a>
+        <a href="#conferences">会议</a>
+        <a href="#projects">项目</a>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="菜单">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <div class="container mobile-nav" id="mobileNav">
+      <a href="#research">研究</a>
+      <a href="#education">教育</a>
+      <a href="#publications">论文</a>
+      <a href="#conferences">会议</a>
+      <a href="#projects">项目</a>
+    </div>
+  </nav>
+
+  <!-- ===== Hero ===== -->
+  <header class="hero">
+    <div class="container">
+      <h1 class="hero-name">苗得雨</h1>
+      <p class="hero-name-en">Deyu Miao</p>
+      <p class="hero-affil">
+        金融学直博生，复旦大学经济学院<br>
+        导师：<strong>刘庆富 教授</strong><br>
+        研究方向：金融市场信息 · 投资者行为 · 资产定价
+      </p>
+      <div class="hero-contact">
+        <a href="mailto:miaodeyu1003@163.com">Email</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Research Interests ===== -->
+  <section id="research" class="section">
+    <div class="container">
+      <h2 class="section-heading">Research Interests</h2>
+      <p class="interests">
+        <span>金融市场信息传递</span>
+        <span>投资者注意力与决策行为</span>
+        <span>资产定价</span>
+        <span>商品期货收益可预测性</span>
+        <span>波动率风险溢价</span>
+        <span>人工智能与金融</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Education ===== -->
+  <section id="education" class="section">
+    <div class="container">
+      <h2 class="section-heading">Education</h2>
+      <div class="edu-item">
+        <p class="edu-date">2022.09 — Present</p>
+        <p class="edu-school">复旦大学 · 经济学院</p>
+        <p class="edu-detail">金融学直博生，金融科技与大数据金融方向</p>
+      </div>
+      <div class="edu-item">
+        <p class="edu-date">2018.09 — 2022.06</p>
+        <p class="edu-school">山东大学 · 数学学院</p>
+        <p class="edu-detail">金融数学与金融工程（彭实戈基地班），理学学士</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Publications ===== -->
+  <section id="publications" class="section">
+    <div class="container">
+      <h2 class="section-heading">Publications</h2>
+
+      <div class="pub-group">
+        <div class="pub-group-label">Journal Articles</div>
+
+        <div class="pub-item">
+          <span class="pub-title">Predicting commodity returns through image-based price patterns</span>
+          <span class="pub-venue">Journal of Futures Markets</span>
+          <span class="pub-year">2025</span><br>
+          <span style="font-size:0.85rem;color:#6b7280;">with Tianxiang Hao, Qingfu Liu, Yiuman Tse</span>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-title">Return seasonality in commodity futures</span>
+          <span class="pub-venue">International Review of Economics and Finance</span>
+          <span class="pub-year">2024</span><br>
+          <span style="font-size:0.85rem;color:#6b7280;">with Yan Li, Qingfu Liu, Yiuman Tse</span>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-title">Uncertainty-driven oil volatility risk premium and international stock market volatility forecasting</span>
+          <span class="pub-venue">Journal of Forecasting</span>
+          <span class="pub-year">2022</span><br>
+          <span style="font-size:0.85rem;color:#6b7280;">with Tong Fang, Zhi Su, Libo Yin</span>
+        </div>
+      </div>
+
+      <div class="pub-group">
+        <div class="pub-group-label">Working Papers</div>
+
+        <div class="pub-item">
+          <span class="pub-title">Strategic homogeneity in trading: Amplifying market volatility and the emergence of mini crashes</span>
+          <span class="pub-status">R&R at Management Science</span><br>
+          <span style="font-size:0.85rem;color:#6b7280;">with Qingfu Liu, Chuanjie Wang, Cristina Dan Wang</span>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-title">Intention in attention: Nowcasting returns using watchlists</span><br>
+          <span style="font-size:0.85rem;color:#6b7280;">with Lin William Cong, Qingfu Liu, Chuanjie Wang</span>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-title">LLM-augmented deep reinforcement learning for basis trading</span><br>
+          <span style="font-size:0.85rem;color:#6b7280;">with Qingfu Liu, Rongkai Pei, Zilu Wang</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Conferences ===== -->
+  <section id="conferences" class="section">
+    <div class="container">
+      <h2 class="section-heading">Conference Presentations</h2>
+      <div class="conf-grid">
+        <div class="conf-item">
+          <span>中国金融科技学术年会</span>
+          <span class="conf-role">Presenter & Discussant</span>
+        </div>
+        <div class="conf-item">
+          <span>期货与衍生品国际学术会议</span>
+          <span class="conf-role">Presenter & Discussant</span>
+        </div>
+        <div class="conf-item">
+          <span>全国金融学博士生论坛</span>
+          <span class="conf-role">Presenter</span>
+        </div>
+        <div class="conf-item">
+          <span>上海市金融工程学会年会</span>
+          <span class="conf-role">Presenter</span>
+        </div>
+        <div class="conf-item">
+          <span>复旦博士生论坛（经济分论坛）</span>
+          <span class="conf-role">Presenter</span>
+        </div>
+        <div class="conf-item">
+          <span>金融科技大数据科研创新实践大赛</span>
+          <span class="conf-role">Presenter</span>
+        </div>
+        <div class="conf-item">
+          <span>中国科技金融学术年会</span>
+          <span class="conf-role">Co-author</span>
+        </div>
+        <div class="conf-item">
+          <span>金融系统工程与风险管理年会</span>
+          <span class="conf-role">Co-author</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Projects ===== -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2 class="section-heading">Research Projects</h2>
+
+      <div class="proj-item">
+        <p class="proj-name">非对称金融风险测度方法与识别技术创新</p>
+        <p class="proj-meta">国家自然科学基金（重点项目），No. 72595845</p>
+      </div>
+      <div class="proj-item">
+        <p class="proj-name">金融虚假信息 TruthSeek 大模型的研发及其应用</p>
+        <p class="proj-meta">上海数学与交叉研究院，No. SIMIS-ID-2025-TF</p>
+      </div>
+      <div class="proj-item">
+        <p class="proj-name">人工智能促进科研范式改革赋能学科跃升计划专项</p>
+        <p class="proj-meta">上海市教育委员会，No. 24KXZNA19，2024–2025</p>
+      </div>
+      <div class="proj-item">
+        <p class="proj-name">异常波动传导与异常交易风险识别预警</p>
+        <p class="proj-meta">科技部国家重点研发计划，2021–2024</p>
+      </div>
+      <div class="proj-item">
+        <p class="proj-name">中国股市异常交易的形成机理及其智能监控研究</p>
+        <p class="proj-meta">国家自然科学基金（面上项目），2019–2022</p>
+      </div>
+      <div class="proj-item">
+        <p class="proj-name">程序化交易对证券市场的影响及监管研究</p>
+        <p class="proj-meta">中国证券业协会，2022</p>
+      </div>
+      <div class="proj-item">
+        <p class="proj-name">《金融大数据分析》（工信部"十四五"规划教材）</p>
+        <p class="proj-meta">参编，刘庆富编著</p>
+      </div>
+      <div class="proj-item">
+        <p class="proj-name">不确定性对系统性金融风险传染影响的异质性研究</p>
+        <p class="proj-meta">山东省自然科学基金，2020–2023</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Deyu Miao</p>
+    </div>
+  </footer>
+
+  <!-- ===== JS ===== -->
+  <script>
+    const btn = document.getElementById('menuBtn');
+    const nav = document.getElementById('mobileNav');
+    let open = false;
+    btn.addEventListener('click', () => {
+      open = !open;
+      nav.classList.toggle('open', open);
+      btn.innerHTML = open
+        ? '<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>'
+        : '<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>';
+    });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      open = false; nav.classList.remove('open');
+      btn.innerHTML = '<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>';
+    }));
+  </script>
+</body>
+</html>
