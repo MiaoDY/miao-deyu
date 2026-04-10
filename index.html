@@ -16,30 +16,24 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ---- Layout ---- */
-    .container { max-width: 780px; margin: 0 auto; padding: 0 32px; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 32px; }
 
     /* ---- Nav ---- */
     nav {
       position: sticky; top: 0; z-index: 100;
       background: rgba(255,255,255,0.97);
       backdrop-filter: blur(8px);
-      border-bottom: 1px solid #e5e7eb;
+      border-bottom: 1px solid #ebebeb;
     }
     nav .container {
-      display: flex; align-items: center; justify-content: space-between;
-      height: 52px;
+      display: flex; align-items: center; justify-content: flex-end;
+      height: 48px;
     }
-    .nav-name {
-      font-family: 'Noto Serif SC', serif;
-      font-weight: 600; font-size: 1rem; color: #111827;
-      letter-spacing: 0.02em;
-    }
-    .nav-links { display: flex; gap: 28px; }
+    .nav-links { display: flex; gap: 32px; }
     .nav-links a {
       font-family: 'Noto Sans SC', sans-serif;
-      font-size: 0.8rem; font-weight: 400; color: #6b7280;
-      text-decoration: none; letter-spacing: 0.03em;
+      font-size: 0.78rem; font-weight: 400; color: #9ca3af;
+      text-decoration: none; letter-spacing: 0.06em;
       transition: color 0.2s;
     }
     .nav-links a:hover { color: #111827; }
@@ -55,155 +49,171 @@
       font-family: 'Noto Sans SC', sans-serif;
       font-size: 0.85rem; color: #4b5563; text-decoration: none;
       padding: 12px 0; border-bottom: 1px solid #f9fafb;
-      transition: color 0.15s;
     }
-    .mobile-nav a:hover { color: #111827; }
     .mobile-nav.open { display: flex; }
 
     @media (max-width: 640px) {
       .nav-links { display: none; }
       .menu-btn { display: block; }
-      .container { padding: 0 20px; }
+      .container { padding: 0 24px; }
     }
 
     /* ---- Hero ---- */
-    .hero { padding: 64px 0 48px; }
+    .hero { padding: 56px 0 44px; }
+
+    .hero-top {
+      display: flex; align-items: baseline; gap: 12px;
+      margin-bottom: 16px;
+    }
     .hero-name {
       font-family: 'Noto Serif SC', serif;
-      font-size: 2.5rem; font-weight: 700; color: #111827;
-      letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 4px;
+      font-size: 1.85rem; font-weight: 600; color: #111827;
+      letter-spacing: 0.04em; line-height: 1.3;
     }
     .hero-name-en {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem; font-weight: 400; font-style: italic;
-      color: #9ca3af; margin-bottom: 20px; letter-spacing: 0.02em;
+      font-size: 1rem; font-weight: 400; font-style: italic;
+      color: #b0b7c3; letter-spacing: 0.02em;
     }
-    .hero-affil {
+
+    .hero-body {
       font-family: 'Noto Sans SC', sans-serif;
-      font-size: 0.95rem; color: #4b5563; line-height: 1.9;
+      font-size: 0.88rem; color: #6b7280; line-height: 2;
       font-weight: 400;
     }
-    .hero-affil strong { color: #111827; font-weight: 500; }
-    .hero-contact {
-      margin-top: 20px; display: flex; gap: 6px; flex-wrap: wrap;
+    .hero-body strong { color: #374151; font-weight: 500; }
+    .hero-body .sep {
+      display: inline-block; width: 1px; height: 12px;
+      background: #d1d5db; vertical-align: middle; margin: 0 10px;
     }
-    .hero-contact a {
+
+    .hero-email {
+      margin-top: 14px;
+    }
+    .hero-email a {
       font-family: 'Noto Sans SC', sans-serif;
-      font-size: 0.8rem; color: #6b7280; text-decoration: none;
-      border: 1px solid #e5e7eb; border-radius: 4px;
-      padding: 4px 14px; transition: all 0.2s; letter-spacing: 0.02em;
+      font-size: 0.82rem; color: #6b7280; text-decoration: none;
+      border-bottom: 1px solid #d1d5db;
+      transition: color 0.2s, border-color 0.2s;
     }
-    .hero-contact a:hover { border-color: #9ca3af; color: #111827; }
+    .hero-email a:hover { color: #111827; border-color: #111827; }
+
+    .hero-line {
+      margin-top: 36px; height: 1px; background: #ebebeb;
+    }
 
     /* ---- Section ---- */
-    .section { padding: 40px 0; }
+    .section { padding: 36px 0; }
     .section + .section { border-top: 1px solid #f3f4f6; }
     .section-heading {
       font-family: 'Noto Sans SC', sans-serif;
-      font-size: 0.75rem; font-weight: 500; color: #9ca3af;
-      text-transform: uppercase; letter-spacing: 0.12em;
-      margin-bottom: 24px;
+      font-size: 0.7rem; font-weight: 500; color: #b0b7c3;
+      text-transform: uppercase; letter-spacing: 0.14em;
+      margin-bottom: 22px;
     }
 
-    /* ---- Research Interests ---- */
+    /* ---- Research ---- */
     .interests {
-      font-size: 0.95rem; color: #4b5563; line-height: 2;
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.88rem; color: #4b5563; line-height: 2.2;
     }
-    .interests span {
-      display: inline-block;
-      border-bottom: 1px solid #e5e7eb;
-      padding-bottom: 1px; margin-right: 4px;
-      transition: border-color 0.2s;
+    .interest-item {
+      display: inline-block; color: #374151; margin-right: 6px;
     }
-    .interests span:hover { border-color: #9ca3af; }
+    .interest-item + .interest-item::before {
+      content: '·'; color: #d1d5db; margin-right: 6px;
+    }
 
     /* ---- Education ---- */
-    .edu-item { margin-bottom: 20px; }
+    .edu-item { margin-bottom: 18px; }
     .edu-item:last-child { margin-bottom: 0; }
-    .edu-date {
-      font-family: 'Noto Sans SC', sans-serif;
-      font-size: 0.78rem; color: #9ca3af; font-weight: 400;
-      margin-bottom: 2px;
+    .edu-row {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
     }
     .edu-school {
-      font-weight: 500; color: #111827; font-size: 0.95rem;
+      font-weight: 500; color: #111827; font-size: 0.92rem;
+    }
+    .edu-date {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.75rem; color: #b0b7c3; font-weight: 400;
+      flex-shrink: 0;
     }
     .edu-detail {
       font-family: 'Noto Sans SC', sans-serif;
-      font-size: 0.85rem; color: #6b7280; font-weight: 400;
+      font-size: 0.82rem; color: #6b7280; font-weight: 400;
+      padding-left: 2px;
     }
 
     /* ---- Publications ---- */
-    .pub-group { margin-bottom: 32px; }
+    .pub-group { margin-bottom: 28px; }
     .pub-group:last-child { margin-bottom: 0; }
     .pub-group-label {
       font-family: 'Noto Sans SC', sans-serif;
-      font-size: 0.72rem; color: #b0b7c3; font-weight: 500;
+      font-size: 0.68rem; color: #c7cdd5; font-weight: 500;
       letter-spacing: 0.1em; text-transform: uppercase;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
     .pub-item {
-      margin-bottom: 18px; padding-left: 18px; text-indent: -18px;
-      font-size: 0.92rem; line-height: 1.8;
+      margin-bottom: 20px; padding-left: 18px; text-indent: -18px;
     }
     .pub-item:last-child { margin-bottom: 0; }
-    .pub-title { color: #111827; font-weight: 500; }
-    .pub-venue {
+    .pub-title {
+      font-size: 0.9rem; color: #111827; font-weight: 500;
+      line-height: 1.7;
+    }
+    .pub-meta {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.8rem; color: #9ca3af; line-height: 1.8;
+    }
+    .pub-meta .pub-venue {
       font-style: italic; color: #6b7280;
     }
-    .pub-venue::before { content: ' — '; }
+    .pub-meta .pub-venue::before { content: '— '; color: #d1d5db; }
     .pub-status {
-      font-family: 'Noto Sans SC', sans-serif;
-      font-style: normal; font-weight: 500; font-size: 0.78rem;
-      color: #b45309; background: #fffbeb; padding: 1px 8px;
-      border-radius: 3px; margin-left: 6px; letter-spacing: 0.02em;
-    }
-    .pub-year {
-      font-family: 'Noto Sans SC', sans-serif;
-      font-size: 0.82rem; color: #9ca3af;
+      font-style: normal; font-weight: 500; font-size: 0.72rem;
+      color: #92400e; background: #fef3c7; padding: 1px 7px;
+      border-radius: 3px; margin-left: 4px; letter-spacing: 0.02em;
     }
 
     /* ---- Conferences ---- */
-    .conf-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 2px 32px;
-    }
-    .conf-item {
-      font-size: 0.88rem; color: #4b5563; padding: 6px 0;
-      border-bottom: 1px solid #f9fafb;
-      display: flex; justify-content: space-between; align-items: baseline;
-      gap: 8px;
-    }
-    .conf-role {
+    .conf-list { list-style: none; }
+    .conf-list li {
       font-family: 'Noto Sans SC', sans-serif;
-      font-size: 0.7rem; color: #b0b7c3; white-space: nowrap; flex-shrink: 0;
+      font-size: 0.85rem; color: #4b5563; line-height: 1.7;
+      padding: 5px 0; display: flex;
+      justify-content: space-between; align-items: baseline;
+      gap: 12px;
+      border-bottom: 1px solid #f9fafb;
     }
-    @media (max-width: 640px) {
-      .conf-grid { grid-template-columns: 1fr; }
+    .conf-list li:last-child { border-bottom: none; }
+    .conf-role {
+      font-size: 0.7rem; color: #c0c7d0; white-space: nowrap; flex-shrink: 0;
     }
 
     /* ---- Projects ---- */
     .proj-item {
-      margin-bottom: 16px; padding-bottom: 16px;
+      margin-bottom: 14px; padding-bottom: 14px;
       border-bottom: 1px solid #f9fafb;
     }
     .proj-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
     .proj-name {
-      font-size: 0.9rem; color: #111827; font-weight: 500; line-height: 1.6;
+      font-size: 0.88rem; color: #111827; font-weight: 500; line-height: 1.65;
     }
     .proj-meta {
       font-family: 'Noto Sans SC', sans-serif;
-      font-size: 0.75rem; color: #9ca3af; margin-top: 2px;
+      font-size: 0.72rem; color: #b0b7c3; margin-top: 1px;
     }
 
     /* ---- Footer ---- */
     footer {
-      margin-top: 24px; padding: 32px 0;
-      border-top: 1px solid #e5e7eb;
+      margin-top: 20px; padding: 28px 0;
+      border-top: 1px solid #ebebeb;
       text-align: center;
     }
     footer p {
       font-family: 'Noto Sans SC', sans-serif;
-      font-size: 0.72rem; color: #c0c7d0; letter-spacing: 0.04em;
+      font-size: 0.7rem; color: #c7cdd5; letter-spacing: 0.05em;
     }
   </style>
 </head>
@@ -212,7 +222,6 @@
   <!-- ===== Nav ===== -->
   <nav>
     <div class="container">
-      <span class="nav-name">苗得雨</span>
       <div class="nav-links">
         <a href="#research">研究</a>
         <a href="#education">教育</a>
@@ -221,45 +230,43 @@
         <a href="#projects">项目</a>
       </div>
       <button class="menu-btn" id="menuBtn" aria-label="菜单">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
-    </div>
-    <div class="container mobile-nav" id="mobileNav">
-      <a href="#research">研究</a>
-      <a href="#education">教育</a>
-      <a href="#publications">论文</a>
-      <a href="#conferences">会议</a>
-      <a href="#projects">项目</a>
     </div>
   </nav>
 
   <!-- ===== Hero ===== -->
   <header class="hero">
     <div class="container">
-      <h1 class="hero-name">苗得雨</h1>
-      <p class="hero-name-en">Deyu Miao</p>
-      <p class="hero-affil">
-        金融学直博生，复旦大学经济学院<br>
-        导师：<strong>刘庆富 教授</strong><br>
-        研究方向：金融市场信息 · 投资者行为 · 资产定价
-      </p>
-      <div class="hero-contact">
-        <a href="mailto:miaodeyu1003@163.com">Email</a>
+      <div class="hero-top">
+        <h1 class="hero-name">苗得雨</h1>
+        <span class="hero-name-en">Deyu Miao</span>
       </div>
+      <p class="hero-body">
+        复旦大学经济学院，金融学直博生
+        <span class="sep"></span>
+        导师：刘庆富 教授
+        <span class="sep"></span>
+        金融市场信息 · 投资者行为 · 资产定价
+      </p>
+      <p class="hero-email">
+        <a href="mailto:miaodeyu1003@163.com">miaodeyu1003@163.com</a>
+      </p>
+      <div class="hero-line"></div>
     </div>
   </header>
 
-  <!-- ===== Research Interests ===== -->
+  <!-- ===== Research ===== -->
   <section id="research" class="section">
     <div class="container">
       <h2 class="section-heading">Research Interests</h2>
       <p class="interests">
-        <span>金融市场信息传递</span>
-        <span>投资者注意力与决策行为</span>
-        <span>资产定价</span>
-        <span>商品期货收益可预测性</span>
-        <span>波动率风险溢价</span>
-        <span>人工智能与金融</span>
+        <span class="interest-item">金融市场信息传递</span>
+        <span class="interest-item">投资者注意力与决策行为</span>
+        <span class="interest-item">资产定价</span>
+        <span class="interest-item">商品期货收益可预测性</span>
+        <span class="interest-item">波动率风险溢价</span>
+        <span class="interest-item">人工智能与金融</span>
       </p>
     </div>
   </section>
@@ -269,13 +276,17 @@
     <div class="container">
       <h2 class="section-heading">Education</h2>
       <div class="edu-item">
-        <p class="edu-date">2022.09 — Present</p>
-        <p class="edu-school">复旦大学 · 经济学院</p>
+        <div class="edu-row">
+          <p class="edu-school">复旦大学 · 经济学院</p>
+          <p class="edu-date">2022 – Present</p>
+        </div>
         <p class="edu-detail">金融学直博生，金融科技与大数据金融方向</p>
       </div>
       <div class="edu-item">
-        <p class="edu-date">2018.09 — 2022.06</p>
-        <p class="edu-school">山东大学 · 数学学院</p>
+        <div class="edu-row">
+          <p class="edu-school">山东大学 · 数学学院</p>
+          <p class="edu-date">2018 – 2022</p>
+        </div>
         <p class="edu-detail">金融数学与金融工程（彭实戈基地班），理学学士</p>
       </div>
     </div>
@@ -288,46 +299,45 @@
 
       <div class="pub-group">
         <div class="pub-group-label">Journal Articles</div>
-
         <div class="pub-item">
-          <span class="pub-title">Predicting commodity returns through image-based price patterns</span>
-          <span class="pub-venue">Journal of Futures Markets</span>
-          <span class="pub-year">2025</span><br>
-          <span style="font-size:0.85rem;color:#6b7280;">with Tianxiang Hao, Qingfu Liu, Yiuman Tse</span>
+          <p class="pub-title">Predicting commodity returns through image-based price patterns</p>
+          <p class="pub-meta">
+            with Tianxiang Hao, Qingfu Liu, Yiuman Tse
+            <span class="pub-venue">Journal of Futures Markets</span> 2025
+          </p>
         </div>
-
         <div class="pub-item">
-          <span class="pub-title">Return seasonality in commodity futures</span>
-          <span class="pub-venue">International Review of Economics and Finance</span>
-          <span class="pub-year">2024</span><br>
-          <span style="font-size:0.85rem;color:#6b7280;">with Yan Li, Qingfu Liu, Yiuman Tse</span>
+          <p class="pub-title">Return seasonality in commodity futures</p>
+          <p class="pub-meta">
+            with Yan Li, Qingfu Liu, Yiuman Tse
+            <span class="pub-venue">International Review of Economics and Finance</span> 2024
+          </p>
         </div>
-
         <div class="pub-item">
-          <span class="pub-title">Uncertainty-driven oil volatility risk premium and international stock market volatility forecasting</span>
-          <span class="pub-venue">Journal of Forecasting</span>
-          <span class="pub-year">2022</span><br>
-          <span style="font-size:0.85rem;color:#6b7280;">with Tong Fang, Zhi Su, Libo Yin</span>
+          <p class="pub-title">Uncertainty-driven oil volatility risk premium and international stock market volatility forecasting</p>
+          <p class="pub-meta">
+            with Tong Fang, Zhi Su, Libo Yin
+            <span class="pub-venue">Journal of Forecasting</span> 2022
+          </p>
         </div>
       </div>
 
       <div class="pub-group">
         <div class="pub-group-label">Working Papers</div>
-
         <div class="pub-item">
-          <span class="pub-title">Strategic homogeneity in trading: Amplifying market volatility and the emergence of mini crashes</span>
-          <span class="pub-status">R&R at Management Science</span><br>
-          <span style="font-size:0.85rem;color:#6b7280;">with Qingfu Liu, Chuanjie Wang, Cristina Dan Wang</span>
+          <p class="pub-title">
+            Strategic homogeneity in trading: Amplifying market volatility and the emergence of mini crashes
+            <span class="pub-status">R&R, Management Science</span>
+          </p>
+          <p class="pub-meta">with Qingfu Liu, Chuanjie Wang, Cristina Dan Wang</p>
         </div>
-
         <div class="pub-item">
-          <span class="pub-title">Intention in attention: Nowcasting returns using watchlists</span><br>
-          <span style="font-size:0.85rem;color:#6b7280;">with Lin William Cong, Qingfu Liu, Chuanjie Wang</span>
+          <p class="pub-title">Intention in attention: Nowcasting returns using watchlists</p>
+          <p class="pub-meta">with Lin William Cong, Qingfu Liu, Chuanjie Wang</p>
         </div>
-
         <div class="pub-item">
-          <span class="pub-title">LLM-augmented deep reinforcement learning for basis trading</span><br>
-          <span style="font-size:0.85rem;color:#6b7280;">with Qingfu Liu, Rongkai Pei, Zilu Wang</span>
+          <p class="pub-title">LLM-augmented deep reinforcement learning for basis trading</p>
+          <p class="pub-meta">with Qingfu Liu, Rongkai Pei, Zilu Wang</p>
         </div>
       </div>
     </div>
@@ -337,40 +347,16 @@
   <section id="conferences" class="section">
     <div class="container">
       <h2 class="section-heading">Conference Presentations</h2>
-      <div class="conf-grid">
-        <div class="conf-item">
-          <span>中国金融科技学术年会</span>
-          <span class="conf-role">Presenter & Discussant</span>
-        </div>
-        <div class="conf-item">
-          <span>期货与衍生品国际学术会议</span>
-          <span class="conf-role">Presenter & Discussant</span>
-        </div>
-        <div class="conf-item">
-          <span>全国金融学博士生论坛</span>
-          <span class="conf-role">Presenter</span>
-        </div>
-        <div class="conf-item">
-          <span>上海市金融工程学会年会</span>
-          <span class="conf-role">Presenter</span>
-        </div>
-        <div class="conf-item">
-          <span>复旦博士生论坛（经济分论坛）</span>
-          <span class="conf-role">Presenter</span>
-        </div>
-        <div class="conf-item">
-          <span>金融科技大数据科研创新实践大赛</span>
-          <span class="conf-role">Presenter</span>
-        </div>
-        <div class="conf-item">
-          <span>中国科技金融学术年会</span>
-          <span class="conf-role">Co-author</span>
-        </div>
-        <div class="conf-item">
-          <span>金融系统工程与风险管理年会</span>
-          <span class="conf-role">Co-author</span>
-        </div>
-      </div>
+      <ul class="conf-list">
+        <li><span>中国金融科技学术年会</span><span class="conf-role">Presenter & Discussant</span></li>
+        <li><span>期货与衍生品国际学术会议</span><span class="conf-role">Presenter & Discussant</span></li>
+        <li><span>全国金融学博士生论坛</span><span class="conf-role">Presenter</span></li>
+        <li><span>上海市金融工程学会年会</span><span class="conf-role">Presenter</span></li>
+        <li><span>复旦博士生论坛（经济分论坛）</span><span class="conf-role">Presenter</span></li>
+        <li><span>金融科技大数据科研创新实践大赛</span><span class="conf-role">Presenter</span></li>
+        <li><span>中国科技金融学术年会</span><span class="conf-role">Co-author</span></li>
+        <li><span>金融系统工程与风险管理年会</span><span class="conf-role">Co-author</span></li>
+      </ul>
     </div>
   </section>
 
@@ -378,7 +364,6 @@
   <section id="projects" class="section">
     <div class="container">
       <h2 class="section-heading">Research Projects</h2>
-
       <div class="proj-item">
         <p class="proj-name">非对称金融风险测度方法与识别技术创新</p>
         <p class="proj-meta">国家自然科学基金（重点项目），No. 72595845</p>
@@ -421,7 +406,6 @@
     </div>
   </footer>
 
-  <!-- ===== JS ===== -->
   <script>
     const btn = document.getElementById('menuBtn');
     const nav = document.getElementById('mobileNav');
@@ -430,12 +414,12 @@
       open = !open;
       nav.classList.toggle('open', open);
       btn.innerHTML = open
-        ? '<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>'
-        : '<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>';
+        ? '<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>'
+        : '<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>';
     });
     nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
       open = false; nav.classList.remove('open');
-      btn.innerHTML = '<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>';
+      btn.innerHTML = '<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>';
     }));
   </script>
 </body>
